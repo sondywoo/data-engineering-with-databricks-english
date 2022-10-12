@@ -7,11 +7,7 @@
 
 # COMMAND ----------
 
-# MAGIC %md <i18n value="5f2cfc0b-1998-4182-966d-8efed6020eb2"/>
-# MAGIC 
-# MAGIC 
-# MAGIC 
-# MAGIC # Getting Started with the Databricks Platform
+# MAGIC %md # Getting Started with the Databricks Platform
 # MAGIC 
 # MAGIC This notebook provides a hands-on review of some of the basic functionality of the Databricks Data Science and Engineering Workspace.
 # MAGIC 
@@ -25,20 +21,13 @@
 
 # COMMAND ----------
 
-# MAGIC %md <i18n value="05dca5e4-6c50-4b39-a497-a35cd6d99434"/>
-# MAGIC 
-# MAGIC 
-# MAGIC 
-# MAGIC # Renaming a Notebook
+# MAGIC %md # Renaming a Notebook
 # MAGIC 
 # MAGIC Changing the name of a notebook is easy. Click on the name at the top of this page, then make changes to the name. To make it easier to navigate back to this notebook later in case you need to, append a short test string to the end of the existing name.
 
 # COMMAND ----------
 
-# MAGIC %md <i18n value="f07b8dd7-436d-4719-9c17-18cd47f493fe"/>
-# MAGIC 
-# MAGIC 
-# MAGIC 
+# MAGIC %md
 # MAGIC # Attaching a cluster
 # MAGIC 
 # MAGIC Executing cells in a notebook requires computing resources, which is provided by clusters. The first time you execute a cell in a notebook, you will be prompted to attach to a cluster if one is not already attached.
@@ -49,10 +38,7 @@
 
 # COMMAND ----------
 
-# MAGIC %md <i18n value="68805a5e-3b2c-4f79-819f-273d4ca95137"/>
-# MAGIC 
-# MAGIC 
-# MAGIC 
+# MAGIC %md
 # MAGIC # Using %run
 # MAGIC 
 # MAGIC Complex projects of any type can benefit from the ability to break them down into simpler, reusable components.
@@ -111,10 +97,7 @@ print(my_name)
 
 # COMMAND ----------
 
-# MAGIC %md <i18n value="ece094f7-d013-4b24-aa54-e934f4ab7dbd"/>
-# MAGIC 
-# MAGIC 
-# MAGIC 
+# MAGIC %md 
 # MAGIC ## Run a Python cell
 # MAGIC 
 # MAGIC Run the following cell to verify that the **`example-setup`** notebook was executed by displaying the **`example_df`** Dataframe. This table consists of 16 rows of increasing values.
@@ -125,10 +108,7 @@ display(example_df)
 
 # COMMAND ----------
 
-# MAGIC %md <i18n value="ce392afd-2e73-4a51-adc4-7d654dad6215"/>
-# MAGIC 
-# MAGIC 
-# MAGIC 
+# MAGIC %md 
 # MAGIC # Change Language
 # MAGIC 
 # MAGIC Notice that the default language for this notebook is set to Python. Change this by clicking the **Python** button to the right of the notebook name. Change the default language to SQL.
@@ -137,10 +117,7 @@ display(example_df)
 
 # COMMAND ----------
 
-# MAGIC %md <i18n value="dfce7fd1-08e8-4cc3-92ac-a2eb74f804ef"/>
-# MAGIC 
-# MAGIC 
-# MAGIC 
+# MAGIC %md 
 # MAGIC # Create a Markdown Cell
 # MAGIC 
 # MAGIC Add a new cell below this one. Populate with some Markdown that includes at least the following elements:
@@ -150,10 +127,7 @@ display(example_df)
 
 # COMMAND ----------
 
-# MAGIC %md <i18n value="a54470bc-2a69-4a34-acbb-fe28c4dee284"/>
-# MAGIC 
-# MAGIC 
-# MAGIC 
+# MAGIC %md 
 # MAGIC ## Run a SQL cell
 # MAGIC 
 # MAGIC Run the following cell to query a Delta table using SQL. This executes a simple query against a table is backed by a Databricks-provided example dataset included in all DBFS installations.
@@ -178,9 +152,7 @@ display(files)
 
 # COMMAND ----------
 
-# MAGIC %md <i18n value="a17b5667-53bc-4f8a-8601-5599f4ebb819"/>
-# MAGIC 
-# MAGIC 
+# MAGIC %md 
 # MAGIC # Clearing notebook state
 # MAGIC 
 # MAGIC Sometimes it is useful to clear all variables defined in the notebook and start from the begining.  This can be useful when you want to test cells in isolation, or you simply want to reset the execution state.
@@ -195,10 +167,7 @@ print(my_name)
 
 # COMMAND ----------
 
-# MAGIC %md <i18n value="8bff18c2-3ecf-484a-9a8c-dadab7eaf0a1"/>
-# MAGIC 
-# MAGIC 
-# MAGIC 
+# MAGIC %md 
 # MAGIC # Review Changes
 # MAGIC 
 # MAGIC Assuming you have imported this material into your workspace using a Databricks Repo, open the Repo dialog by clicking the **`published`** branch button at the top-left corner of this page. You should see three changes:
@@ -210,10 +179,7 @@ print(my_name)
 
 # COMMAND ----------
 
-# MAGIC %md <i18n value="cb3c335a-dd4c-4620-9f10-6946250f2e02"/>
-# MAGIC 
-# MAGIC 
-# MAGIC 
+# MAGIC %md 
 # MAGIC ## Wrapping Up
 # MAGIC 
 # MAGIC By completing this lab, you should now feel comfortable manipulating notebooks, creating new cells, and running notebooks within notebooks.

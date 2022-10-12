@@ -12,7 +12,8 @@ DA.conclude_setup()                      # Conclude setup by advertising environ
 # COMMAND ----------
 
 # ANSWER
-my_name = "Donald Duck"
+my_name = None
+# my_name = "Donald Duck"
 
 # COMMAND ----------
 
