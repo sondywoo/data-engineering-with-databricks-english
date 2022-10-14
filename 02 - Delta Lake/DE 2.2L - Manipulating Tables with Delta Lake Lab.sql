@@ -242,13 +242,17 @@ WHERE delicious = false;
 
 -- COMMAND ----------
 
+SELECT * FROM beans;
+
+-- COMMAND ----------
+
 CREATE OR REPLACE TEMP VIEW new_beans(name, color, grams, delicious) AS VALUES
 ('black', 'black', 60.5, true),
 ('lentils', 'green', 500, true),
 ('kidney', 'red', 387.2, true),
 ('castor', 'brown', 25, false);
 
-SELECT * FROM new_beans
+SELECT * FROM new_beans;
 
 -- COMMAND ----------
 
@@ -265,8 +269,13 @@ SELECT * FROM new_beans
 
 -- COMMAND ----------
 
--- TODO
-<FILL-IN>
+MERGE INTO beans b
+USING new_beans n
+ON b.name = n.name AND b.color = n.color
+WHEN MATCHED 
+THEN UPDATE SET grams = b.grams + n.grams
+WHEN NOT MATCHED AND n.delicious = true
+THEN INSERT *;
 
 -- COMMAND ----------
 
@@ -275,6 +284,20 @@ SELECT * FROM new_beans
 -- MAGIC 
 -- MAGIC 
 -- MAGIC Run the cell below to check your work.
+
+-- COMMAND ----------
+
+DESCRIBE HISTORY beans;
+
+-- COMMAND ----------
+
+-- MAGIC %python
+-- MAGIC version = spark.sql("DESCRIBE HISTORY beans").selectExpr("max(version)").first()[0]
+-- MAGIC last_tx = spark.sql("DESCRIBE HISTORY beans").filter(f"version={version}")
+-- MAGIC metrics = last_tx.select("operationMetrics").first()[0]
+-- MAGIC print(version)
+-- MAGIC print(last_tx)
+-- MAGIC print(metrics)
 
 -- COMMAND ----------
 
@@ -304,8 +327,7 @@ SELECT * FROM new_beans
 
 -- COMMAND ----------
 
--- TODO
-<FILL-IN>
+DROP TABLE beans;
 
 -- COMMAND ----------
 
