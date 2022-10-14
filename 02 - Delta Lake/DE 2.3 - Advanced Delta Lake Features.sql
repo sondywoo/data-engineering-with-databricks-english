@@ -43,6 +43,14 @@
 
 -- COMMAND ----------
 
+-- Added by sondy 20221014
+-- Init the db environment
+create database if not exists sondydb;
+use sondydb;
+show databases;
+
+-- COMMAND ----------
+
 -- MAGIC %md <i18n value="7e85feea-be41-41f7-9cd7-df2c140d6286"/>
 -- MAGIC 
 -- MAGIC 
@@ -103,7 +111,7 @@ WHEN NOT MATCHED AND u.type = "insert"
 
 -- COMMAND ----------
 
-DESCRIBE EXTENDED students
+DESCRIBE EXTENDED students;
 
 -- COMMAND ----------
 
@@ -114,7 +122,7 @@ DESCRIBE EXTENDED students
 
 -- COMMAND ----------
 
-DESCRIBE DETAIL students
+DESCRIBE DETAIL students;
 
 -- COMMAND ----------
 
