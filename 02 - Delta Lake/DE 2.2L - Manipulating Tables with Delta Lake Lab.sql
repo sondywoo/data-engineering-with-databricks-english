@@ -327,7 +327,17 @@ DESCRIBE HISTORY beans;
 
 -- COMMAND ----------
 
+-- MAGIC %python
+-- MAGIC print(spark.sql("SHOW TABLES LIKE 'beans'").collect())
+
+-- COMMAND ----------
+
 DROP TABLE beans;
+
+-- COMMAND ----------
+
+-- MAGIC %python
+-- MAGIC print(spark.sql("SHOW TABLES LIKE 'beans'").collect())
 
 -- COMMAND ----------
 
@@ -341,6 +351,13 @@ DROP TABLE beans;
 
 -- MAGIC %python
 -- MAGIC assert spark.sql("SHOW TABLES LIKE 'beans'").collect() == [], "Confirm that you have dropped the `beans` table from your current database"
+
+-- COMMAND ----------
+
+-- Added by sondy 20221014
+-- Roll back the Init of environment
+drop database if exists sondydb;
+show databases;
 
 -- COMMAND ----------
 
