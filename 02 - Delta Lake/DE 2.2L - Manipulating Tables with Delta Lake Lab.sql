@@ -62,8 +62,17 @@
 
 -- COMMAND ----------
 
--- TODO
-<FILL-IN>
+-- Added by sondy 20221014
+-- Init the db environment
+create database if not exists sondydb;
+use sondydb;
+show databases;
+
+-- COMMAND ----------
+
+-- ANSWER
+CREATE TABLE beans 
+(name STRING, color STRING, grams FLOAT, delicious BOOLEAN);
 
 -- COMMAND ----------
 
@@ -106,8 +115,7 @@ INSERT INTO beans VALUES
 
 -- COMMAND ----------
 
--- TODO
-<FILL-IN>
+SELECT * FROM beans;
 
 -- COMMAND ----------
 
@@ -119,11 +127,10 @@ INSERT INTO beans VALUES
 
 -- COMMAND ----------
 
--- TODO
-<FILL-IN>
+INSERT INTO beans VALUES 
 ('pinto', 'brown', 1.5, true),
 ('green', 'green', 178.3, true),
-('beanbag chair', 'white', 40000, false)
+('beanbag chair', 'white', 40000, false);
 
 -- COMMAND ----------
 
@@ -170,8 +177,10 @@ WHERE name = "jelly"
 
 -- COMMAND ----------
 
--- TODO
-<FILL-IN>
+-- ANSWER
+UPDATE beans
+SET grams = 1500
+WHERE name = 'pinto'
 
 -- COMMAND ----------
 
@@ -204,8 +213,8 @@ WHERE name = "jelly"
 
 -- COMMAND ----------
 
--- TODO
-<FILL-IN>
+DELETE FROM beans 
+WHERE delicious = false;
 
 -- COMMAND ----------
 
