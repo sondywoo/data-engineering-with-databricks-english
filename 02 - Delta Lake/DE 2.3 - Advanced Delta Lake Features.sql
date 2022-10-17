@@ -147,7 +147,9 @@ DESCRIBE DETAIL students;
 -- COMMAND ----------
 
 -- MAGIC %python
--- MAGIC display(dbutils.fs.ls(f"{DA.paths.user_db}/students"))
+-- MAGIC DA_paths_user_db = "dbfs:/user/hive/warehouse/sondydb.db"
+-- MAGIC # display(dbutils.fs.ls(f"{DA.paths.user_db}/students"))
+-- MAGIC display(dbutils.fs.ls(f"{DA_paths_user_db}/students"))
 
 -- COMMAND ----------
 
@@ -165,7 +167,8 @@ DESCRIBE DETAIL students;
 -- COMMAND ----------
 
 -- MAGIC %python
--- MAGIC display(dbutils.fs.ls(f"{DA.paths.user_db}/students/_delta_log"))
+-- MAGIC # display(dbutils.fs.ls(f"{DA.paths.user_db}/students/_delta_log"))
+-- MAGIC display(dbutils.fs.ls(f"{DA_paths_user_db}/students/_delta_log"))
 
 -- COMMAND ----------
 
@@ -203,7 +206,8 @@ DESCRIBE DETAIL students
 -- COMMAND ----------
 
 -- MAGIC %python
--- MAGIC display(spark.sql(f"SELECT * FROM json.`{DA.paths.user_db}/students/_delta_log/00000000000000000007.json`"))
+-- MAGIC # display(spark.sql(f"SELECT * FROM json.`{DA.paths.user_db}/students/_delta_log/00000000000000000007.json`"))
+-- MAGIC display(spark.sql(f"SELECT * FROM json.`{DA_paths_user_db}/students/_delta_log/00000000000000000007.json`"))
 
 -- COMMAND ----------
 
@@ -314,7 +318,7 @@ SELECT * FROM students
 
 -- COMMAND ----------
 
-RESTORE TABLE students TO VERSION AS OF 8 
+RESTORE TABLE students TO VERSION AS OF 8
 
 -- COMMAND ----------
 
@@ -322,6 +326,10 @@ RESTORE TABLE students TO VERSION AS OF 8
 -- MAGIC 
 -- MAGIC 
 -- MAGIC Note that a **`RESTORE`** <a href="https://docs.databricks.com/spark/latest/spark-sql/language-manual/delta-restore.html" target="_blank">command</a> is recorded as a transaction; you won't be able to completely hide the fact that you accidentally deleted all the records in the table, but you will be able to undo the operation and bring your table back to a desired state.
+
+-- COMMAND ----------
+
+desc history students;
 
 -- COMMAND ----------
 
