@@ -390,7 +390,21 @@ VACUUM students RETAIN 0 HOURS
 -- COMMAND ----------
 
 -- MAGIC %python
--- MAGIC display(dbutils.fs.ls(f"{DA.paths.user_db}/students"))
+-- MAGIC # display(dbutils.fs.ls(f"{DA.paths.user_db}/students"))
+-- MAGIC display(dbutils.fs.ls(f"{DA_paths_user_db}/students/_delta_log"))
+
+-- COMMAND ----------
+
+desc history students;
+
+-- COMMAND ----------
+
+-- Try to rollback it to any of old versions, will got failure exception.
+RESTORE TABLE students TO VERSION AS OF 3;
+
+-- COMMAND ----------
+
+select * from students;
 
 -- COMMAND ----------
 
@@ -403,6 +417,18 @@ VACUUM students RETAIN 0 HOURS
 
 -- MAGIC %python
 -- MAGIC DA.cleanup()
+
+-- COMMAND ----------
+
+show tables;
+
+-- COMMAND ----------
+
+-- Added by sondy 20221018
+-- Roll back the Init of environment
+drop table if exists students;
+drop database if exists sondydb;
+show databases;
 
 -- COMMAND ----------
 
