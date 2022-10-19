@@ -37,8 +37,9 @@
 
 -- Added by sondy 20221014
 -- Init the db environment
--- drop table if exists beans;
--- drop database if exists sondydb;
+drop table if exists beans;
+drop view if exists pre_delete_vw;
+drop database if exists sondydb;
 create database if not exists sondydb;
 use sondydb;
 show databases;
@@ -182,13 +183,12 @@ SELECT * FROM beans
 
 -- COMMAND ----------
 
--- TODO
-CREATE OR REPLACE TEMP VIEW pre_delete_vw AS 
-SELECT * FROM beans VERSION AS OF 4;
+SELECT sum(grams) FROM beans VERSION AS OF 4;
 
 -- COMMAND ----------
 
-SELECT sum(grams) FROM beans VERSION AS OF 4;
+CREATE OR REPLACE TEMP VIEW pre_delete_vw AS 
+SELECT * FROM beans VERSION AS OF 4;
 
 -- COMMAND ----------
 
@@ -221,8 +221,11 @@ SELECT * FROM pre_delete_vw
 
 -- COMMAND ----------
 
--- TODO
-<FILL-IN>
+SELECT * FROM beans VERSION AS OF 5;
+
+-- COMMAND ----------
+
+RESTORE TABLE beans TO VERSION AS OF 5;
 
 -- COMMAND ----------
 
@@ -233,7 +236,7 @@ SELECT * FROM pre_delete_vw
 
 -- COMMAND ----------
 
-DESCRIBE HISTORY beans
+DESCRIBE HISTORY beans;
 
 -- COMMAND ----------
 
@@ -256,8 +259,12 @@ DESCRIBE HISTORY beans
 
 -- COMMAND ----------
 
--- TODO
-<FILL-IN>
+-- Check how many files totally before OPTIMIZE operation (see the numFiles col).
+DESCRIBE DETAIL beans;
+
+-- COMMAND ----------
+
+OPTIMIZE beans ZORDER BY name;
 
 -- COMMAND ----------
 
@@ -268,7 +275,7 @@ DESCRIBE HISTORY beans
 
 -- COMMAND ----------
 
-DESCRIBE DETAIL beans
+DESCRIBE DETAIL beans;
 
 -- COMMAND ----------
 

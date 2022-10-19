@@ -358,7 +358,7 @@ desc history students;
 -- MAGIC By default, **`VACUUM`** will prevent you from deleting files less than 7 days old, just to ensure that no long-running operations are still referencing any of the files to be deleted. If you run **`VACUUM`** on a Delta table, you lose the ability time travel back to a version older than the specified data retention period.  In our demos, you may see Databricks executing code that specifies a retention of **`0 HOURS`**. This is simply to demonstrate the feature and is not typically done in production.  
 -- MAGIC 
 -- MAGIC In the following cell, we:
--- MAGIC 1. Turn off a check to prevent premature deletion of data files
+-- MAGIC 1. Turn OFF a check to prevent premature deletion of data files
 -- MAGIC 1. Make sure that logging of **`VACUUM`** commands is enabled
 -- MAGIC 1. Use the **`DRY RUN`** version of vacuum to print out all records to be deleted
 
@@ -378,7 +378,10 @@ VACUUM students RETAIN 0 HOURS DRY RUN
 
 -- COMMAND ----------
 
-VACUUM students RETAIN 0 HOURS
+VACUUM students RETAIN 0 HOURS;
+
+-- Turn ON a safety check to prevent premature deletion of data files after VACUUM operations.
+SET spark.databricks.delta.retentionDurationCheck.enabled = true;
 
 -- COMMAND ----------
 
