@@ -350,7 +350,7 @@ VACUUM beans RETAIN 0 HOURS
 
 -- COMMAND ----------
 
-SET spark.databricks.delta.retentionDurationCheck.enabled = true
+SET spark.databricks.delta.retentionDurationCheck.enabled = true;
 
 -- COMMAND ----------
 
@@ -361,7 +361,7 @@ SET spark.databricks.delta.retentionDurationCheck.enabled = true
 
 -- COMMAND ----------
 
-DESCRIBE HISTORY beans
+DESCRIBE HISTORY beans;
 
 -- COMMAND ----------
 
@@ -388,7 +388,8 @@ SELECT * FROM beans
 
 -- COMMAND ----------
 
--- SELECT * FROM beans@v1
+SELECT * FROM beans@v1;
+-- <==> SELECT * FROM beans VERSION AS OF 1;
 
 -- COMMAND ----------
 
@@ -408,6 +409,15 @@ SELECT * FROM beans
 -- MAGIC 
 -- MAGIC  
 -- MAGIC Run the following cell to delete the tables and files associated with this lesson.
+
+-- COMMAND ----------
+
+-- Added by sondy 20221014
+-- Init the db environment
+drop table if exists beans;
+drop view if exists pre_delete_vw;
+drop database if exists sondydb;
+show databases;
 
 -- COMMAND ----------
 

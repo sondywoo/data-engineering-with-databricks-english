@@ -273,6 +273,10 @@ DESCRIBE HISTORY students
 
 -- COMMAND ----------
 
+SELECT * FROM students@v3;
+
+-- COMMAND ----------
+
 SELECT * 
 FROM students VERSION AS OF 3
 
