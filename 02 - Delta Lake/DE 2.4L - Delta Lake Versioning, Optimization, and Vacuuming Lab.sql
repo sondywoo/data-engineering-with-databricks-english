@@ -35,6 +35,20 @@
 
 -- COMMAND ----------
 
+-- Added by sondy 20221014
+-- Init the db environment
+-- drop table if exists beans;
+-- drop database if exists sondydb;
+create database if not exists sondydb;
+use sondydb;
+show databases;
+
+-- COMMAND ----------
+
+show tables;
+
+-- COMMAND ----------
+
 -- MAGIC %md <i18n value="ea2fae13-227c-4c03-8617-87e06826526e"/>
 -- MAGIC 
 -- MAGIC 
@@ -104,8 +118,7 @@ WHEN NOT MATCHED AND b.delicious = true THEN
 
 -- COMMAND ----------
 
--- TODO
-<FILL-IN>
+DESC HISTORY beans;
 
 -- COMMAND ----------
 
@@ -170,8 +183,12 @@ SELECT * FROM beans
 -- COMMAND ----------
 
 -- TODO
-CREATE OR REPLACE TEMP VIEW pre_delete_vw AS
-<FILL-IN>
+CREATE OR REPLACE TEMP VIEW pre_delete_vw AS 
+SELECT * FROM beans VERSION AS OF 4;
+
+-- COMMAND ----------
+
+SELECT sum(grams) FROM beans VERSION AS OF 4;
 
 -- COMMAND ----------
 
