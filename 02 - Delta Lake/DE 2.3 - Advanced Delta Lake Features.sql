@@ -100,6 +100,41 @@ WHEN NOT MATCHED AND u.type = "insert"
 
 -- COMMAND ----------
 
+-- MAGIC %python
+-- MAGIC ## sondy temp
+-- MAGIC students_df = spark.table("students")
+-- MAGIC display(students_df)
+-- MAGIC students_df.printSchema()
+-- MAGIC 
+-- MAGIC sub_df = (students_df
+-- MAGIC           .where("value < 10")
+-- MAGIC           .orderBy("name")
+-- MAGIC          )
+-- MAGIC display(sub_df)
+-- MAGIC 
+-- MAGIC num_rows = sub_df.count()
+-- MAGIC rows = sub_df.take(2)
+-- MAGIC print(num_rows, rows)
+-- MAGIC 
+-- MAGIC sub_sql_df = spark.sql("select * from students where value < 10 order by name")
+-- MAGIC display(sub_sql_df)
+
+-- COMMAND ----------
+
+-- MAGIC %python
+-- MAGIC from pyspark.sql.functions import col
+-- MAGIC 
+-- MAGIC print(students_df.name)
+-- MAGIC print(students_df["name"])
+-- MAGIC print(col("name"))
+-- MAGIC 
+-- MAGIC new_student_df = (students_df
+-- MAGIC                  .withColumn("new_val", (col("students.value") * 100).cast("int"))
+-- MAGIC                  )
+-- MAGIC display(new_student_df)
+
+-- COMMAND ----------
+
 -- MAGIC %md <i18n value="5f6b0330-42f2-4307-9ff2-0b534947b286"/>
 -- MAGIC 
 -- MAGIC 
